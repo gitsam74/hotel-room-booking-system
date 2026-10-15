@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102d29"><meta name="description" content="Hotel room and booking management dashboard">
+  <title>Staywise — Hotel Booking</title><link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="#"><span class="brand-mark">S</span><span>staywise<small>HOTEL MANAGEMENT</small></span></a><div class="top-meta"><span class="live-dot"></span> Booking dashboard <span class="avatar">SW</span></div></header>
+  <main class="shell">
+    <section class="hero"><div><p class="eyebrow">PROPERTY OVERVIEW</p><h1>Your rooms, <em>beautifully managed.</em></h1><p class="subhead">Manage room inventory, check availability and keep every reservation in order.</p></div><div class="hero-art" aria-hidden="true"><div class="sun"></div><div class="arch"><div class="window"></div><div class="bed"><i></i></div></div><div class="plant">✳</div></div></section>
+    <section class="stats" aria-label="Summary"><article class="stat"><span class="stat-icon">▦</span><div><p>Total rooms</p><strong id="totalRooms">—</strong></div></article><article class="stat"><span class="stat-icon">✓</span><div><p>Available now</p><strong id="availableRooms">—</strong></div></article><article class="stat"><span class="stat-icon">▣</span><div><p>Active bookings</p><strong id="activeBookings">—</strong></div></article><article class="stat"><span class="stat-icon">↗</span><div><p>Room categories</p><strong id="roomTypes">—</strong></div></article></section>
+    <div id="notice" class="notice" role="status" hidden></div>
+    <section class="workspace">
+      <div class="panel inventory"><div class="panel-head"><div><p class="eyebrow">ROOM INVENTORY</p><h2>Rooms & availability</h2></div><button class="button primary" id="toggleRoomForm">＋ Add room</button></div>
+        <form id="roomForm" class="inline-form" hidden><label>Room number<input name="roomNo" placeholder="e.g. 204" required maxlength="12"></label><label>Room type<select name="type" required><option value="">Choose type</option><option>Standard</option><option>Deluxe</option><option>Suite</option><option>Family</option><option>Executive</option></select></label><label>Price / night (₹)<input name="price" type="number" min="1" step="1" placeholder="2500" required></label><button class="button primary" type="submit">Save room</button></form>
+        <div class="filters"><label class="searchbox"><span>⌕</span><input id="searchText" placeholder="Search room number or type"></label><select id="typeFilter" aria-label="Filter by room type"><option>All types</option><option>Standard</option><option>Deluxe</option><option>Suite</option><option>Family</option><option>Executive</option></select></div>
+        <div class="table-wrap"><table><thead><tr><th>ROOM</th><th>CATEGORY</th><th>PRICE / NIGHT</th><th>STATUS</th><th></th></tr></thead><tbody id="roomRows"><tr><td colspan="5" class="empty">Connecting to your hotel database…</td></tr></tbody></table></div><p class="footnote">Availability is checked against your selected stay dates when you search.</p>
+      </div>
+      <aside class="panel booking-panel"><div class="panel-head"><div><p class="eyebrow">NEW RESERVATION</p><h2>Book a room</h2></div><span class="booking-icon">✳</span></div><p class="muted">A lovely stay starts with a few details.</p>
+        <form id="bookingForm" class="stack-form"><label>Guest full name<input name="guestName" placeholder="Enter guest name" required maxlength="100"></label><label>Room<select name="roomId" id="bookingRoom" required><option value="">Select a room</option></select></label><div class="date-grid"><label>Check-in<input name="checkIn" id="checkIn" type="date" required></label><label>Check-out<input name="checkOut" id="checkOut" type="date" required></label></div><div class="stay-note" id="stayNote">Choose your dates to check availability.</div><button class="button primary full" type="submit">Confirm booking <span>→</span></button></form>
+      </aside>
+    </section>
+    <section class="panel reservations"><div class="panel-head"><div><p class="eyebrow">GUEST JOURNEY</p><h2>Recent reservations</h2></div><span class="muted small">Bookings & cancellations</span></div><div class="table-wrap"><table><thead><tr><th>GUEST</th><th>ROOM</th><th>STAY</th><th>STATUS</th><th></th></tr></thead><tbody id="bookingRows"><tr><td colspan="5" class="empty">Loading reservations…</td></tr></tbody></table></div></section>
+    <footer><span>staywise <span class="footer-dot">●</span> Room management made simple.</span><span>Full-stack demo · Express + MongoDB</span></footer>
+  </main>
+  <script src="/app.js" defer></script>
+</body></html>
